@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-
+import darkMode from './Components/darkMode';
 function App() {
-
   const job1s = [{
     name: "Demo todo 1",
     status: false

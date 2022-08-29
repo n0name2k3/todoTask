@@ -55,18 +55,23 @@ body {
 
 #root{
   background-color: #fff;
-  margin-top: 12px;
+  margin-top: 48px;
   border-radius: 5px;
   box-shadow: 5px 10px 10px 1px #83858f;
   font-family: 'Roboto';
+  transition: all .3s linear;
+}
+
+.dark{
+  background-color: #1f1f1f!important;
 }
 
 .App{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
-  min-height: 200px;
+  width: 500px;
+  min-height: 600px;
   position: relative;
   margin-top: 12px;
   z-index: 1;
@@ -76,11 +81,11 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  font-size: 12px;
+  font-size: 24px;
 }
 
 .todoStatus span{
-  padding: 2px 8px;
+  padding: 8px 8px;
   margin: 0 4px;
   border: 1px solid black;
   border-radius: 8px;
@@ -88,32 +93,52 @@ body {
   transition: all .3s linear;
 }
 
+.dark .todoStatus span{
+  padding: 8px 8px;
+  margin: 0 4px;
+  border: 1px solid white;
+  color: var(--todo-text-color);
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .3s linear;
+}
 
 .addTodoInp{
   border: .2px solid var(--main-bg-color);
   outline: 0;
   border-radius: 5px;
-  font-size: 8px;
-  padding: 4px 4px;
-  margin-top: 10px;
+  font-size: 18px;
+  padding: 8px 8px;
+  margin : 24px 0 12px 0;
+}
+
+.dark .addTodoInp{
+  background-color: #1f1f1f;
+  color: var(--todo-text-color);
 }
 
 .addTodoInp::placeholder{
-  font-size: 8px;
   color: var(--todo-text-color);
 }
 
 .addTodoBtn{
   position: absolute;
   bottom: 10px;
-  height: 25px;
-  font-size: 8px;
+  height: 50px;
+  font-size: 18px;
   background-color: var(--main-bg-color);
   border-radius: 8px;
   border-style: none;
   color: #fff;
   cursor: pointer;
   transition: all .3s linear;
+}
+
+.dark .addTodoBtn{
+  background-color: #1f1f1f;
+  color: var(--todo-text-color);
+  border: 1px solid white;
 }
 
 .addTodoBtn:hover{
@@ -123,20 +148,26 @@ body {
 ul{
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 400px;
   margin: 10px 0 50px 0;
+}
+
+.todo-item{
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .todo-item span,b{
   position: relative;
   user-select: none;
   color:var(--todo-text-color);
-  font-size: 8px;
+  font-size: 18px;
 }
 
 .todo-item b{
   color: var(--main-bg-color);
-  font-size: 5px;
+  font-size: 10px;
 }
 
 .todo-item span::before{
@@ -169,26 +200,28 @@ ul{
 
 .checkbox i{
   position: absolute;
-  top: 8px;
-  left: 2.3px;
+  left: 1px;
+  top: -14px;
   cursor: pointer;
   transition: all .3s linear;
-  font-size: 8px;
+  font-size: 28px;
 }
 
 .todo-item-checkbox{
-  opacity: .00001;
+  height: 22px;
+  width: 22px;
+  opacity: 0.00001;
 }
 
 .todo-item-name {
   display: inline-block;
-  max-width: 70px;
+  max-width: 200px;
+  margin: 0 12px;
 }
-
 
 .handleBtn{
   cursor: pointer;
-  font-size: 13px;
+  font-size: 24px;
 }
 
 .fa-check{
@@ -218,7 +251,44 @@ ul{
 
 .selecting {
   border: 1px solid white!important;
-  background: #1f1f1f;
-  color:var(--todo-text-color);
+  background: var(--main-bg-color);
+  color: white;
 }
 
+.dark .selecting{
+  color: var(--main-bg-color)!important;
+}
+
+.modeBox {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 12px;
+}
+
+.modeBox i{
+  padding: 12px 12px;
+  border: 1px solid var(--todo-text-color);
+  border-radius: 2rem;
+  transition: all .3s linear;
+}
+
+.modeBox i:hover{
+  border-radius: 8px;
+}
+
+.modeBtn {
+  cursor: pointer;
+}
+
+.fa-moon{
+  color: var(--todo-text-color);
+  background-color: #1f1f1f;
+}
+
+.light .fa-moon{
+  display: none;
+}
+
+.dark .fa-sun{
+  display: none;
+}
