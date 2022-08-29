@@ -113,6 +113,10 @@ body {
   visibility: hidden;
 }
 
+.nonInp .editBtn {
+  display: none;
+}
+
 .addTodoInp{
   border: .2px solid var(--main-bg-color);
   outline: 0;
