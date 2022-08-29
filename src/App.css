@@ -1,38 +1,224 @@
-.App {
-  text-align: center;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root{
+  --todo-text-color : #a6afc9;
+  --main-bg-color : #fca2d1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #c8cde0;
+  display: flex;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root{
+  background-color: #fff;
+  margin-top: 12px;
+  border-radius: 5px;
+  box-shadow: 5px 10px 10px 1px #83858f;
+  font-family: 'Roboto';
+}
+
+.App{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 250px;
+  min-height: 200px;
+  position: relative;
+  margin-top: 12px;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.todoStatus{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todoStatus span{
+  padding: 2px 8px;
+  margin: 0 4px;
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .3s linear;
 }
+
+
+.addTodoInp{
+  border: .2px solid var(--main-bg-color);
+  outline: 0;
+  border-radius: 5px;
+  font-size: 8px;
+  padding: 4px 4px;
+  margin-top: 10px;
+}
+
+.addTodoInp::placeholder{
+  font-size: 8px;
+  color: var(--todo-text-color);
+}
+
+.addTodoBtn{
+  position: absolute;
+  bottom: 10px;
+  height: 25px;
+  font-size: 8px;
+  background-color: var(--main-bg-color);
+  border-radius: 8px;
+  border-style: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s linear;
+}
+
+.addTodoBtn:hover{
+  box-shadow: 3px 3px 10px 1px #83858f;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 10px 0 50px 0;
+}
+
+.todo-item span,b{
+  position: relative;
+  user-select: none;
+  color:var(--todo-text-color);
+  font-size: 8px;
+}
+
+.todo-item b{
+  color: var(--main-bg-color);
+  font-size: 5px;
+}
+
+.todo-item span::before{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #dbe1f5;
+  top: 45%;
+  transition: all 0.3s linear;
+}
+
+.handleBtnContain{
+  display: inline-block;
+  color: var(--main-bg-color);
+}
+
+.handleBtnContain i + i{
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.checkbox{
+  color: var(--todo-text-color);
+  position: relative;
+  z-index: -1;
+  margin-left: 4px;
+}
+
+.checkbox i{
+  position: absolute;
+  top: 8px;
+  left: 2.3px;
+  cursor: pointer;
+  transition: all .3s linear;
+  font-size: 8px;
+}
+
+.todo-item-checkbox{
+  opacity: .00001;
+}
+
+.todo-item-name {
+  display: inline-block;
+  max-width: 70px;
+}
+
+
+.handleBtn{
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.fa-check{
+  cursor: pointer;
+}
+
+.editing .editBtn,.fa-check{
+  visibility: hidden;
+}
+
+.completed .checkbox i{
+  background-color: var(--main-bg-color);
+  border-radius: 50%;
+}
+
+.completed .editBtn{
+  visibility: hidden;
+}
+
+.completed span::before{
+  width: 100%;
+}
+
+.editing .fa-check{
+  visibility: visible;
+}
+
+.selecting {
+  border: 1px solid white!important;
+  background: #1f1f1f;
+  color:var(--todo-text-color);
+}
+
