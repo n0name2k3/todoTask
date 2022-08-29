@@ -104,6 +104,15 @@ body {
   transition: all .3s linear;
 }
 
+.nonInp .addTodoInp{
+  visibility: hidden;
+}
+
+.nonInp .addTodoBtn{
+  transition: all 0s linear;
+  visibility: hidden;
+}
+
 .addTodoInp{
   border: .2px solid var(--main-bg-color);
   outline: 0;
@@ -222,14 +231,32 @@ ul{
 .handleBtn{
   cursor: pointer;
   font-size: 24px;
+  margin: 0px 8px;
 }
 
 .fa-check{
   cursor: pointer;
+  display: none;
+  margin: 0px 8px;
+  font-size: 24px;
 }
 
-.editing .editBtn,.fa-check{
-  visibility: hidden;
+.editing .editBtn{
+  display: none;
+}
+
+.editing .todo-item-checkbox, .editing .checkbox{
+  display: none;
+}
+
+.editing .todo-item-name {
+  padding: 4px 4px;
+  border: 1px solid var(--main-bg-color);
+  border-radius: 5px;
+}
+
+.editing .fa-check{
+  display: inline-block;
 }
 
 .completed .checkbox i{

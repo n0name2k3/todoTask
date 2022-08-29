@@ -120,12 +120,30 @@ function App() {
         else todoStatus.classList.remove("selecting")
 
 }
+const _App = useRef()
+window.onload = function()
+{
+  let App = document.querySelector(".App")
+};
+  console.log(_App.current)
+  if(status != "All"){
+    _App.current.classList.add("nonInp");
+  }
+  else{
+    if(document.querySelector(".App")) document.querySelector(".App").classList.remove("nonInp")
+    if(_App.current) _App.current.classList.remove("nonInp")
+  }
+  
+  
+  
+
+  
 
   setInterval(checkTodo, 10);
   setInterval(handleTodoName,6000)
 
   return (
-    <div className="App">
+    <div className="App" id='app' ref={_App}>
       <div className='todoStatus'>
       <span className="selecting" onClick={() => setStatus("All")}>All</span>
       <span onClick={() => setStatus("Completed")}>Completed</span>
@@ -135,8 +153,9 @@ function App() {
       <button onClick={addTodo} className="addTodoBtn">Add new task</button>
       <ul>
         {todos.map((item, index) => {
-          if (item.status == true && status == "Completed") {
-            return <li key={index} className="todo-item completed">
+          if (status == "Completed") {
+            if (item.status == true ){
+              return <li key={index} className="todo-item completed">
               <div className='checkbox'>
                 <i class="fa-regular fa-circle"></i>
               </div>
@@ -146,24 +165,24 @@ function App() {
                 <i className="fa-regular fa-circle-xmark handleBtn" onClick={() => deleteTodo({ index }.index)}></i>
               </div>
             </li>
+            }
           }
-          else if (item.status == false && status == "In-Completed") 
+          else if (status == "In-Completed")
           {
-            return <li key={index} className="todo-item">
-            <div className='checkbox'>
-              <i class="fa-regular fa-circle"></i>
-            </div>
-            <input type={"checkbox"} onChange={() => setChange(change + 1)} className="todo-item-checkbox" onClick={() => handleTodo({ index }.index)}></input>
-            <span name="todo-item-name" className='todo-item-name' onInput={e => handleEditTodoName(e.currentTarget.textContent, index)}>{item.name}</span><b> {item.date}</b>
-            <div className='handleBtnContain'>
-              <i className="fa-solid fa-check hanleBtn" onClick={() => handleEditConfirm({index}.index)}></i>
-              <i className="fa-regular fa-pen-to-square handleBtn editBtn" onClick={() => handleEdit({ index }.index)}></i>
-              <i className="fa-regular fa-circle-xmark handleBtn" onClick={() => deleteTodo({ index }.index)}></i>
-            </div>
-          </li>
-          }
-          else if (item.status == true && status == "In-Completed") {
-            
+            if(item.status == false){
+              return <li key={index} className="todo-item">
+              <div className='checkbox'>
+                <i class="fa-regular fa-circle"></i>
+              </div>
+              <input type={"checkbox"} onChange={() => setChange(change + 1)} className="todo-item-checkbox" onClick={() => handleTodo({ index }.index)}></input>
+              <span name="todo-item-name" className='todo-item-name' onInput={e => handleEditTodoName(e.currentTarget.textContent, index)}>{item.name}</span><b> {item.date}</b>
+              <div className='handleBtnContain'>
+                <i className="fa-solid fa-check hanleBtn" onClick={() => handleEditConfirm({index}.index)}></i>
+                <i className="fa-regular fa-pen-to-square handleBtn editBtn" onClick={() => handleEdit({ index }.index)}></i>
+                <i className="fa-regular fa-circle-xmark handleBtn" onClick={() => deleteTodo({ index }.index)}></i>
+              </div>
+            </li>
+            }
           }
           else if(status == "All" && item.status == false)
           {
